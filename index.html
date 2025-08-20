@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Automation for South African Businesses | Free Audit</title>
     <meta name="description" content="Get a free AI automation audit specifically for South African businesses. Discover how to save 10+ hours weekly despite load shedding. No obligation.">
-
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Particles.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
+    
     <!-- Google Fonts (Montserrat & Open Sans from PRD) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +40,7 @@
             font-family: 'Montserrat', sans-serif;
         }
         .accent-text {
-            color: #38bdf8; /* Sky-400 (replacing Gold #D4AF37 for better Tailwind integration) */
+            color: #38bdf8; /* Sky-400 */
         }
         .cta-button {
             background-color: #0ea5e9; /* Sky-500 */
@@ -215,6 +213,38 @@
                 height: 280px; /* Match original height for larger screens */
             }
         }
+        /* --- Calculator Specific Styles --- */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #4b5563;
+            border-radius: 5px;
+            outline: none;
+            accent-color: #0ea5e9; /* Sky-500 */
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #0ea5e9;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #0ea5e9;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .output-item span {
+            color: #38bdf8;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -228,10 +258,10 @@
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#problems" class="nav-link font-medium">Challenges</a>
                 <a href="#potential" class="nav-link font-medium">Potential</a>
+                <a href="#calculator" class="nav-link font-medium">Savings</a>
                 <a href="#audit" class="nav-link font-medium">Blueprint</a>
-                <!-- Removed 'About Russ' link -->
             </div>
-            <button id="nav-book-call" class="hidden md:inline-block cta-button !py-2 !px-5">Book a Call</button>
+            <button id="nav-book-call" class="hidden md:inline-block cta-button !py-2 !px-5 open-modal-button">Book a Call</button>
         </nav>
     </header>
 
@@ -243,14 +273,11 @@
                 Stop Losing Money to Manual Work: <span class="accent-text">AI Automation</span> Built for South African Businesses
             </h1>
             <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
-                <!-- Updated years to match PRD -->
                 As a systems engineer with 8+ years helping South African businesses like yours, I've created custom automation solutions that save owners an average of 12 hours weekly—even during load shedding.
             </p>
             <div class="mt-8">
-                <!-- Removed 'Chat to us' button -->
-                <button id="hero-book-call" class="open-modal-button cta-button !py-4 !px-8">Get My Free AI Action Plan</button>
+                <button class="open-modal-button cta-button !py-4 !px-8">Get My Free AI Action Plan</button>
             </div>
-            <!-- Updated timeframe -->
             <p class="mt-4 text-sm text-gray-500">No obligation. Complete report delivered within 12 hours.</p>
         </section>
 
@@ -324,7 +351,7 @@
             </div>
         </section>
 
-        <!-- New Section: Unlock Your Business Potential (Replaces Use Cases) -->
+        <!-- New Section: Unlock Your Business Potential -->
         <section id="potential" class="py-16 card">
             <div class="text-center mb-12 px-6">
                 <h2 class="text-3xl md:text-4xl font-bold heading-font text-white">Unlock Your Business Potential</h2>
@@ -353,11 +380,66 @@
             </div>
         </section>
 
+        <!-- Section: Interactive Calculator (NEW) -->
+        <section id="calculator" class="py-16">
+            <div class="text-center mb-12 px-6">
+                <h2 class="text-3xl md:text-4xl font-bold heading-font text-white">Visualize Your Automation Potential</h2>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Estimate the real cost of manual tasks in your business and see the potential for savings with targeted automation.</p>
+            </div>
+            <div class="card max-w-5xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6">
+                        <!-- Employees Slider -->
+                        <div>
+                            <label for="calc-employees" class="flex justify-between font-semibold text-white">
+                                <span>Number of Employees</span>
+                                <span class="accent-text" id="calc-employeesValue">5</span>
+                            </label>
+                            <input type="range" id="calc-employees" min="1" max="50" value="5" class="w-full">
+                        </div>
+                        <!-- Hours Slider -->
+                        <div>
+                            <label for="calc-hours" class="flex justify-between font-semibold text-white">
+                                <span>Weekly Manual Hours per Employee</span>
+                                <span class="accent-text" id="calc-hoursValue">8</span>
+                            </label>
+                            <input type="range" id="calc-hours" min="1" max="20" value="8" class="w-full">
+                        </div>
+                        <!-- Rate Slider (Updated Max and Default) -->
+                        <div>
+                            <label for="calc-rate" class="flex justify-between font-semibold text-white">
+                                <span>Your Average Hourly Rate (R)</span>
+                                <span class="accent-text" id="calc-rateValue">500</span>
+                            </label>
+                            <input type="range" id="calc-rate" min="100" max="2000" value="500" step="50" class="w-full">
+                        </div>
+                    </div>
+                    <div class="text-center bg-gray-900/50 p-8 rounded-lg">
+                        <h4 class="text-lg font-semibold text-white mb-6">Your Estimated Monthly Impact</h4>
+                        <div class="mb-8">
+                            <p class="text-gray-400">Productivity Lost:</p>
+                            <div class="text-3xl md:text-4xl font-bold accent-text mt-2">
+                                <span id="calc-lostHours">160</span> hours
+                            </div>
+                            <p class="text-gray-400 text-sm mt-1">/ month</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-400">Potential Cost Savings:</p>
+                            <div class="text-3xl md:text-4xl font-bold accent-text mt-2">
+                                R <span id="calc-costSavings">80,000</span>
+                            </div>
+                            <p class="text-gray-400 text-sm mt-1">/ month</p>
+                        </div>
+                        <p class="text-xs text-gray-500 italic mt-6">*Estimates based on 4.33 weeks per month.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Section 4: The Free AI Automation Audit (Blueprint) -->
         <section id="audit" class="py-16">
             <div class="text-center mb-12 px-6">
                 <h2 class="text-3xl md:text-4xl font-bold heading-font text-white">Your Free South African Business Automation Blueprint</h2>
-                <!-- Updated timeframe -->
                 <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Discover Your Top 3 Time-Saving Opportunities. Complete this 3-minute assessment and receive a personalized report showing exactly how to save 10+ hours weekly—delivered within 12 hours.</p>
             </div>
             <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 px-6 mb-12">
@@ -374,13 +456,11 @@
                 <div class="text-center card">
                     <div class="text-3xl mb-4 accent-text">📄</div>
                     <h3 class="text-xl font-semibold mb-2 text-white">Receive Your Actionable Blueprint</h3>
-                    <!-- Updated timeframe -->
                     <p class="text-gray-400">Get a clear, step-by-step report with your top automation opportunities—delivered within 12 hours.</p>
                 </div>
             </div>
             <div class="text-center">
-                <button id="audit-book-call" class="open-modal-button cta-button !py-4 !px-10">Book Your Free Audit</button>
-                <!-- Updated timeframe -->
+                <button class="open-modal-button cta-button !py-4 !px-10">Book Your Free Audit</button>
                 <p class="mt-4 text-sm text-gray-500">No obligation. Complete report delivered within 12 hours.</p>
             </div>
         </section>
@@ -389,19 +469,17 @@
         <section class="py-20 text-center card">
             <h2 class="text-3xl md:text-4xl font-bold heading-font text-white mb-6">Ready to Reclaim Your Time and Amplify Your Business?</h2>
             <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Sometimes, the biggest leaps forward begin with a simple conversation. If you're tired of operational bottlenecks and ready to explore how targeted automation can transform your workflow, let's chat.</p>
-            <button id="final-cta-book-call" class="open-modal-button mt-8 cta-button !py-4 !px-10">Book Your Free Discovery Call</button>
+            <button class="open-modal-button mt-8 cta-button !py-4 !px-10">Book Your Free Discovery Call</button>
         </section>
 
     </main>
 
     <!-- Section 7: Footer -->
     <footer id="contact" class="text-center py-10 mt-16 border-t border-gray-700 relative z-10">
-        <!-- Anonymized copyright -->
         <p class="text-gray-400">&copy; 2025 Russ. All rights reserved.</p>
         <p class="text-sm text-gray-500 mt-2">Based in Cape Town, Serving Businesses Across South Africa</p>
         <div class="mt-4">
             <a href="https://www.linkedin.com/in/russ-van-niekerk" target="_blank" rel="noopener" class="text-gray-400 hover:text-sky-400 mx-2">LinkedIn</a>
-            <!-- Removed other links -->
         </div>
     </footer>
 
@@ -422,15 +500,15 @@
     <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // --- Particles.js Configuration (Matching the example) ---
+            // --- Particles.js Configuration ---
             particlesJS('particles-js', {
                 "particles": {
                     "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
-                    "color": { "value": "#38bdf8" }, // Sky-400
+                    "color": { "value": "#38bdf8" },
                     "shape": { "type": "circle" },
                     "opacity": { "value": 0.3, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
                     "size": { "value": 3, "random": true },
-                    "line_linked": { "enable": true, "distance": 150, "color": "#4b5563", "opacity": 0.4, "width": 1 }, // Gray-600
+                    "line_linked": { "enable": true, "distance": 150, "color": "#4b5563", "opacity": 0.4, "width": 1 },
                     "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "out" }
                 },
                 "interactivity": {
@@ -454,7 +532,6 @@
             const modalLoader = document.getElementById('modal-loader');
             const openModalButtons = document.querySelectorAll('.open-modal-button');
             const closeModalButton = document.getElementById('modal-close-button');
-            // Use the Calendly link from the PRD/previous iterations
             const bookingUrl = 'https://cal.com/russvn/aiaudit';
 
             const openModal = () => {
@@ -466,8 +543,7 @@
                 }, 10);
 
                 modalLoader.style.display = 'flex';
-                modalIframe.src = ''; // Clear previous src
-                // Add a small delay to ensure loader is visible before setting src
+                modalIframe.src = '';
                 setTimeout(() => {
                      modalIframe.src = bookingUrl;
                 }, 100);
@@ -479,7 +555,7 @@
                 setTimeout(() => {
                     modal.style.display = 'none';
                     document.body.classList.remove('modal-open');
-                    modalIframe.src = 'about:blank'; // Stop iframe loading
+                    modalIframe.src = 'about:blank';
                 }, 300);
             };
 
@@ -487,10 +563,8 @@
                 modalLoader.style.display = 'none';
             };
 
-            // Handle errors in iframe loading
             modalIframe.onerror = () => {
                  modalLoader.style.display = 'none';
-                 // Optional: Show an error message inside the modal
                  modalIframe.insertAdjacentHTML('afterend', '<p class="text-red-500 p-4">Failed to load the booking page. Please try again or visit <a href="' + bookingUrl + '" target="_blank" class="underline">the booking page directly</a>.</p>');
             };
 
@@ -502,7 +576,7 @@
                 }
             });
 
-            // --- Smooth Scrolling for Anchor Links (from previous JS) ---
+            // --- Smooth Scrolling for Anchor Links ---
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     const targetId = this.getAttribute('href');
@@ -517,6 +591,35 @@
                     }
                 });
             });
+
+            // --- Calculator Logic (Updated) ---
+            const calcEmployeesSlider = document.getElementById('calc-employees');
+            const calcHoursSlider = document.getElementById('calc-hours');
+            const calcRateSlider = document.getElementById('calc-rate');
+
+            function updateCalculator() {
+                if (!calcEmployeesSlider || !calcHoursSlider || !calcRateSlider) return;
+
+                const employees = parseInt(calcEmployeesSlider.value, 10);
+                const hours = parseInt(calcHoursSlider.value, 10);
+                const rate = parseInt(calcRateSlider.value, 10);
+
+                document.getElementById('calc-employeesValue').textContent = employees;
+                document.getElementById('calc-hoursValue').textContent = hours;
+                document.getElementById('calc-rateValue').textContent = rate.toLocaleString('en-ZA');
+
+                const totalHoursPerMonth = employees * hours * 4.33;
+                const totalSavingsPerMonth = totalHoursPerMonth * rate;
+
+                document.getElementById('calc-lostHours').textContent = Math.round(totalHoursPerMonth).toLocaleString('en-ZA');
+                document.getElementById('calc-costSavings').textContent = Math.round(totalSavingsPerMonth).toLocaleString('en-ZA');
+            }
+
+            if (calcEmployeesSlider) calcEmployeesSlider.addEventListener('input', updateCalculator);
+            if (calcHoursSlider) calcHoursSlider.addEventListener('input', updateCalculator);
+            if (calcRateSlider) calcRateSlider.addEventListener('input', updateCalculator);
+
+            updateCalculator();
 
         });
     </script>
