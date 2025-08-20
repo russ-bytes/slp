@@ -5,707 +5,506 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Automation for South African Businesses | Free Audit</title>
     <meta name="description" content="Get a free AI automation audit specifically for South African businesses. Discover how to save 10+ hours weekly despite load shedding. No obligation.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Particles.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <!-- Google Fonts (Montserrat & Open Sans from PRD) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
-        /* CSS Variables for Branding (from PRD Section 6.1) */
-        :root {
-            --color-primary: #0A2463; /* Deep blue */
-            --color-secondary: #D4AF37; /* Gold */
-            --color-accent: #4CAF50; /* Green */
-            --color-neutral-light: #F5F5F5; /* Light gray */
-            --color-text: #333;
-            --color-text-light: #666;
-            --font-heading: 'Montserrat', sans-serif;
-            --font-body: 'Open Sans', sans-serif;
-            --border-radius: 8px;
-            --spacing-unit: 1rem;
-            --max-width: 1200px;
-            --card-transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* --- Custom Styles overriding/adding to Tailwind --- */
+        html {
+            scroll-behavior: smooth;
         }
-
-        /* Reset & Base Styles */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            font-family: var(--font-body);
-            line-height: 1.6;
-            color: var(--color-text);
-            background-color: #fff;
-            overflow-x: hidden; /* Prevent horizontal scroll from card tilt */
+            font-family: 'Open Sans', sans-serif;
+            background-color: #111827; /* Gray-900 */
+            color: #d1d5db; /* Gray-300 */
+            /* Ensure Particles.js background is visible */
+            background: linear-gradient(145deg, #1f2937, #111827);
         }
-
-        .container {
-            width: 90%;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: calc(var(--spacing-unit) * 2) 0;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: var(--spacing-unit);
-        }
-
-        a {
-            color: var(--color-primary);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        p {
-            margin-bottom: var(--spacing-unit);
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            border-radius: var(--border-radius);
-            font-family: var(--font-heading);
-            font-weight: 600;
-            text-align: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            border: none;
-            font-size: 1rem;
-            margin-bottom: calc(var(--spacing-unit) / 2);
-            text-decoration: none; /* For links styled as buttons */
-            color: white; /* Default for primary buttons */
-        }
-
-        .btn-primary {
-            background-color: var(--color-secondary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: #b89528; /* Darker gold */
-            transform: translateY(-2px);
-            text-decoration: none;
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--color-primary);
-            border: 2px solid var(--color-primary);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(10, 36, 99, 0.05);
-            transform: translateY(-2px);
-            text-decoration: none;
-        }
-
-        .btn-large {
-             padding: 18px 36px;
-             font-size: 1.1rem;
-        }
-
-        .microcopy {
-            font-size: 0.85rem;
-            color: var(--color-text-light);
-            margin-top: 0;
-            margin-bottom: calc(var(--spacing-unit) * 1.5);
-        }
-
-        /* Sections */
-        section {
-            padding: calc(var(--spacing-unit) * 3) 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: calc(var(--spacing-unit) * 2);
-            font-size: 2rem;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto calc(var(--spacing-unit) * 2);
-            color: var(--color-text-light);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            background-color: var(--color-neutral-light);
-            text-align: center;
-            padding: calc(var(--spacing-unit) * 4) 0;
-        }
-
-        .hero-headline {
-            font-size: 2.2rem;
-            margin-bottom: var(--spacing-unit);
-        }
-
-        .hero-subheadline {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto var(calc(var(--spacing-unit) * 2));
-        }
-
-        .hero-ctas {
-            margin-top: calc(var(--spacing-unit) * 2);
-        }
-
-        /* Floating 3D Cards for Problems */
-        .problem-grid {
-            display: grid;
-            gap: calc(var(--spacing-unit) * 2);
-            perspective: 1000px; /* For 3D effect */
-        }
-
-        .problem-item {
-            background-color: #fff;
-            padding: calc(var(--spacing-unit) * 1.5);
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: var(--card-transition);
-            position: relative;
-            transform-style: preserve-3d; /* For 3D effect */
-            text-align: center; /* Center content */
-        }
-
-        .problem-item:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        }
-
-        .problem-icon {
-            width: 60px;
-            height: 60px;
-            background-color: var(--color-neutral-light);
-            border-radius: 50%;
-            margin: 0 auto var(--spacing-unit); /* Center icon */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--color-primary);
-            font-size: 1.5rem;
-        }
-
-        .problem-item h3 {
-            margin-top: 0;
-            margin-bottom: var(--spacing-unit);
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
+        #particles-js {
             position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
-            backdrop-filter: blur(5px); /* Blur effect */
-            animation: fadeIn 0.3s ease-out forwards;
+            top: 0;
+            left: 0;
+            z-index: -1;
         }
-
-        .modal-content {
-            background-color: #fff;
-            margin: 10% auto;
-            padding: calc(var(--spacing-unit) * 2);
-            border-radius: var(--border-radius);
-            width: 90%;
-            max-width: 600px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            position: relative;
-            animation: slideIn 0.3s ease-out forwards;
+        .heading-font {
+            font-family: 'Montserrat', sans-serif;
         }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            position: absolute;
-            top: 15px;
-            right: 20px;
+        .accent-text {
+            color: #38bdf8; /* Sky-400 (replacing Gold #D4AF37 for better Tailwind integration) */
         }
-
-        .close:hover,
-        .close:focus {
-            color: var(--color-text);
-        }
-
-        .modal-content h3 {
-             margin-top: 0;
-             text-align: center;
-             color: var(--color-primary);
-        }
-
-         /* Animations for Modal */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* New Engaging Section: Unlock Your Business Potential */
-        .section-potential {
-            background: linear-gradient(135deg, var(--color-primary), #1a3a7a); /* Subtle gradient */
+        .cta-button {
+            background-color: #0ea5e9; /* Sky-500 */
             color: white;
-            text-align: center;
-            padding: calc(var(--spacing-unit) * 4) 0;
-        }
-
-        .section-potential .container {
-             display: flex;
-             flex-direction: column;
-             align-items: center;
-             gap: calc(var(--spacing-unit) * 2);
-        }
-
-        .section-potential .section-title {
-             color: white;
-             margin-bottom: calc(var(--spacing-unit) * 1.5);
-        }
-
-        .section-potential p {
-             max-width: 700px;
-             margin: 0 auto calc(var(--spacing-unit) * 1.5);
-             font-size: 1.1rem;
-             opacity: 0.9; /* Slightly less opaque for better readability */
-        }
-
-        .potential-highlights {
-             display: flex;
-             flex-wrap: wrap;
-             justify-content: center;
-             gap: calc(var(--spacing-unit) * 2);
-             margin: calc(var(--spacing-unit) * 2) 0;
-             width: 100%;
-        }
-
-        .highlight-item {
-             flex: 1 1 250px; /* Flex grow, shrink, basis */
-             background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
-             padding: calc(var(--spacing-unit) * 1.5);
-             border-radius: var(--border-radius);
-             text-align: center;
-             backdrop-filter: blur(5px); /* Frosted glass effect */
-        }
-
-        .highlight-icon {
-             font-size: 2rem;
-             margin-bottom: var(--spacing-unit);
-             color: var(--color-secondary); /* Use gold for icons */
-        }
-
-        .highlight-item h3 {
-             color: white;
-             margin-bottom: calc(var(--spacing-unit) / 2);
-        }
-
-        .highlight-item p {
-             font-size: 0.95rem;
-             margin-bottom: 0;
-             opacity: 0.85;
-        }
-
-        .section-potential .btn {
-             background-color: white;
-             color: var(--color-primary);
-             border: 2px solid white;
-             font-weight: bold;
-        }
-
-        .section-potential .btn:hover {
-             background-color: rgba(255, 255, 255, 0.9);
-             transform: translateY(-2px);
-        }
-
-        /* Audit Section */
-        .section-audit {
-            /* background-color: var(--color-neutral-light); - Removed background */
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem; /* Rounded-lg */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(14, 165, 233, 0.39);
+            cursor: pointer;
+            border: none;
+            text-decoration: none; /* For links styled as buttons */
+            display: inline-block;
             text-align: center;
         }
-
-        .audit-intro {
-             max-width: 800px;
-             margin: 0 auto calc(var(--spacing-unit) * 3);
+        .cta-button:hover {
+            background-color: #0284c7; /* Sky-600 */
+            transform: scale(1.05);
+            text-decoration: none;
+            color: white;
         }
-
-        .audit-process {
-            display: grid;
-            gap: calc(var(--spacing-unit) * 2);
-            max-width: 900px;
-            margin: 0 auto calc(var(--spacing-unit) * 3);
+        .nav-link {
+            transition: color 0.3s ease;
+            color: #d1d5db; /* Gray-300 */
         }
-
-        .process-step {
-            background-color: #fff;
-            padding: calc(var(--spacing-unit) * 1.5);
-            border-radius: var(--border-radius);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        .nav-link:hover {
+            color: #38bdf8; /* Sky-400 */
         }
-
-        .step-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--color-neutral-light);
-            border-radius: 50%;
-            margin: 0 auto var(--spacing-unit);
+        .card {
+            background-color: rgba(31, 41, 55, 0.5); /* Gray-800/50 */
+            border: 1px solid #4b5563; /* Gray-600 */
+            border-radius: 0.75rem; /* Rounded-xl */
+            padding: 1.5rem; /* P-6 */
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover {
+            border-color: #38bdf8; /* Hover:border-sky-400 */
+            transform: translateY(-5px);
+        }
+        /* --- Problem Card Flip Effect --- */
+        .flip-card {
+            perspective: 1000px;
+            height: 100%;
+            width: 100%;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.7s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+        }
+        .flip-card-front {
+            background-color: rgba(31, 41, 55, 0.5); /* Gray-800/50 */
+            border: 1px solid #4b5563; /* Gray-600 */
+        }
+        .flip-card-back {
+            background-color: #0ea5e9; /* Sky-500 */
+            color: #ffffff;
+            transform: rotateY(180deg);
+            border: 1px solid #38bdf8; /* Sky-400 */
+        }
+        .flip-card-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: #38bdf8; /* Sky-400 */
+        }
+        /* --- Modal Styles --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(17, 24, 39, 0.8); /* Gray-900/80 */
+            backdrop-filter: blur(4px);
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-container {
+            background-color: #1f2937; /* Gray-800 */
+            border-radius: 0.75rem; /* Rounded-xl */
+            border: 1px solid #4b5563; /* Gray-600 */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            width: 95%;
+            height: 90%;
+            max-width: 1024px;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.95);
+            transition: transform 0.3s ease-in-out;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #4b5563; /* Gray-600 */
+        }
+        .modal-body {
+            flex-grow: 1;
+            position: relative;
+        }
+        .modal-iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-bottom-left-radius: 0.75rem;
+            border-bottom-right-radius: 0.75rem;
+        }
+        .modal-close-btn {
+            background: none;
+            border: none;
+            color: #9ca3af; /* Gray-400 */
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .modal-close-btn:hover {
+            color: #ffffff;
+        }
+        .modal-loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            color: var(--color-primary);
+            color: #fff;
+            font-size: 1.2rem;
+            background-color: #1f2937; /* Gray-800 */
+            z-index: 1;
         }
-
-        .process-step h3 {
-            margin-top: 0;
+        body.modal-open {
+            overflow: hidden;
         }
-
-        /* About Section (Now Link Button) */
-        .section-about {
-            text-align: center;
-            background-color: var(--color-neutral-light);
+        /* --- Section Spacing --- */
+        section {
+            padding-top: 4rem; /* Py-16 equivalent */
+            padding-bottom: 4rem;
         }
-
-        /* Footer */
-        .site-footer {
-            background-color: var(--color-primary);
-            color: white;
-            text-align: center;
-            padding: calc(var(--spacing-unit) * 2) 0;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
+        /* --- Responsive Adjustments --- */
         @media (min-width: 768px) {
-            .container {
-                width: 85%;
-            }
-
-            .hero-headline {
-                font-size: 2.8rem;
-            }
-
-            .problem-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .audit-process {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .modal-content {
-                 padding: calc(var(--spacing-unit) * 3);
-            }
-
-            .potential-highlights {
-                 flex-wrap: nowrap; /* Keep items in one line on larger screens */
+            .flip-card {
+                height: 280px; /* Match original height for larger screens */
             }
         }
-
-        @media (min-width: 1024px) {
-            .container {
-                width: 80%;
-            }
-
-            .hero-headline {
-                font-size: 3.2rem;
-            }
-
-            .problem-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        /* Accessibility */
-        a:focus, .btn:focus, input:focus, textarea:focus, select:focus, .problem-item:focus {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-        }
-
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 6px;
-            background: var(--color-primary);
-            color: white;
-            padding: 8px;
-            z-index: 1000;
-            text-decoration: none;
-        }
-        .skip-link:focus {
-            top: 6px;
-        }
-
-        /* Print Styles */
-        @media print {
-            .btn, .hero-ctas, .problem-item, .modal, .potential-highlights {
-                display: none;
-            }
-            .hero-headline, .section-title {
-                font-size: 1.5rem;
-            }
-        }
-
     </style>
 </head>
-<body>
-    <!-- Skip link for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+<body class="antialiased">
+    <!-- Particles.js Background Container -->
+    <div id="particles-js"></div>
 
-    <!-- Section 1: Hero (The Hook) -->
-    <header class="hero-section">
-        <div class="container">
-            <h1 class="hero-headline">Stop Losing Money to Manual Work: AI Automation Built for South African Businesses</h1>
-            <!-- Updated Hero Subheadline to match PRD and previous versions -->
-            <p class="hero-subheadline">As a systems engineer with 8+ years helping South African businesses like yours, I've created custom automation solutions that save owners an average of 12 hours weekly—even during load shedding.</p>
-            <div class="hero-ctas">
-                <!-- Cleaned Primary CTA Link -->
-                <a href="https://cal.com/russvn/aiaudit" class="btn btn-primary btn-large">Get My Free AI Action Plan</a>
-                <!-- Updated Microcopy to align with PRD expectation for report delivery -->
-                <p class="microcopy">No obligation. Complete report delivered within 48 hours.</p>
-                <!-- Updated Secondary CTA Text -->
-                <a href="#contact" class="btn btn-secondary">Chat to us</a>
-                <p class="microcopy">Prefer to talk first? I'm just an email away.</p>
+    <!-- Sticky Header/Navigation -->
+    <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-40 shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+            <a href="#home" class="font-bold text-xl accent-text heading-font">Russ</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#problems" class="nav-link font-medium">Challenges</a>
+                <a href="#potential" class="nav-link font-medium">Potential</a>
+                <a href="#audit" class="nav-link font-medium">Blueprint</a>
+                <!-- Removed 'About Russ' link -->
             </div>
-        </div>
+            <button id="nav-book-call" class="hidden md:inline-block cta-button !py-2 !px-5">Book a Call</button>
+        </nav>
     </header>
 
-    <main id="main-content">
-        <!-- Section 2: The Problem - "Sound Familiar..." (Updated with 3D Cards & Modals) -->
-        <section id="problems" class="section-problems">
-            <div class="container">
-                <h2 class="section-title">Sound Familiar, South African Business Owner?</h2>
-                <div class="problem-grid">
-                    <div class="problem-item" tabindex="0" data-modal="modal1">
-                        <div class="problem-icon">⚡</div>
-                        <h3>Load Shedding Disruptions</h3>
-                        <p>When the power goes out...</p> <!-- Truncated for card view -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        <!-- Section 1: Hero (The Hook) -->
+        <section id="home" class="py-20 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold heading-font text-white leading-tight">
+                Stop Losing Money to Manual Work: <span class="accent-text">AI Automation</span> Built for South African Businesses
+            </h1>
+            <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
+                <!-- Updated years to match PRD -->
+                As a systems engineer with 8+ years helping South African businesses like yours, I've created custom automation solutions that save owners an average of 12 hours weekly—even during load shedding.
+            </p>
+            <div class="mt-8">
+                <!-- Removed 'Chat to us' button -->
+                <button id="hero-book-call" class="open-modal-button cta-button !py-4 !px-8">Get My Free AI Action Plan</button>
+            </div>
+            <!-- Updated timeframe -->
+            <p class="mt-4 text-sm text-gray-500">No obligation. Complete report delivered within 12 hours.</p>
+        </section>
+
+        <!-- Section 2: The Problem - "Sound Familiar..." (3D Flip Cards) -->
+        <section id="problems" class="py-16">
+            <div class="text-center mb-12 px-6">
+                <h2 class="text-3xl md:text-4xl font-bold heading-font text-white">Sound Familiar, South African Business Owner?</h2>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">I understand the unique operational challenges you face. Let's see if these resonate.</p>
+            </div>
+            <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-6">
+                <!-- Problem 1 -->
+                <div class="flip-card cursor-pointer">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-icon">⚡</div>
+                            <h3 class="text-xl font-semibold mb-2 text-white">Load Shedding Disruptions</h3>
+                            <p class="text-sm text-gray-400">When the power goes out...</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-semibold mb-2">Load Shedding Disruptions</h3>
+                            <p class="text-sm">When the power goes out, your entire workflow stops. Manual systems mean lost productivity that's impossible to recover.</p>
+                            <p class="text-xs italic mt-2">SA businesses lose avg. 8 hrs weekly to load shedding.</p>
+                        </div>
                     </div>
-                    <div class="problem-item" tabindex="0" data-modal="modal2">
-                        <div class="problem-icon">📝</div>
-                        <h3>Manual Admin Overload</h3>
-                        <p>Spending hours on data entry...</p>
+                </div>
+                <!-- Problem 2 -->
+                <div class="flip-card cursor-pointer">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-icon">📝</div>
+                            <h3 class="text-xl font-semibold mb-2 text-white">Manual Admin Overload</h3>
+                            <p class="text-sm text-gray-400">Spending hours on data entry...</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-semibold mb-2">Manual Admin Overload</h3>
+                            <p class="text-sm">Spending hours on data entry, invoicing, and follow-ups instead of growing your business.</p>
+                            <p class="text-xs italic mt-2">78% of SA SMEs spend >30% of week on admin.</p>
+                        </div>
                     </div>
-                    <div class="problem-item" tabindex="0" data-modal="modal3">
-                        <div class="problem-icon">🔗</div>
-                        <h3>Disconnected Tools Chaos</h3>
-                        <p>Your WhatsApp, Excel, and email...</p>
+                </div>
+                <!-- Problem 3 -->
+                <div class="flip-card cursor-pointer">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-icon">🔗</div>
+                            <h3 class="text-xl font-semibold mb-2 text-white">Disconnected Tools Chaos</h3>
+                            <p class="text-sm text-gray-400">Your WhatsApp, Excel, and email...</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-semibold mb-2">Disconnected Tools Chaos</h3>
+                            <p class="text-sm">Your WhatsApp, Excel, and email don't talk to each other, creating errors and wasted time.</p>
+                            <p class="text-xs italic mt-2">Most SA businesses use 3+ disconnected tools.</p>
+                        </div>
                     </div>
-                    <div class="problem-item" tabindex="0" data-modal="modal4">
-                        <div class="problem-icon">📈</div>
-                        <h3>Growth Stalled by Capacity</h3>
-                        <p>You're turning away business...</p>
+                </div>
+                <!-- Problem 4 -->
+                <div class="flip-card cursor-pointer">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-icon">📈</div>
+                            <h3 class="text-xl font-semibold mb-2 text-white">Growth Stalled by Capacity</h3>
+                            <p class="text-sm text-gray-400">You're turning away business...</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-semibold mb-2">Growth Stalled by Capacity</h3>
+                            <p class="text-sm">You're turning away business because you simply can't handle more clients with your current systems.</p>
+                            <p class="text-xs italic mt-2">82% cite capacity as top growth barrier.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Modals for Problem Details -->
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h3>Load Shedding Disruptions</h3>
-                <p>When the power goes out, your entire workflow stops. Manual systems mean lost productivity that's impossible to recover.</p>
-                <p class="sa-context"><em>South African businesses lose an average of 8 hours weekly to load shedding disruptions—time you'll never get back.</em></p>
-            </div>
-        </div>
-        <div id="modal2" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h3>Manual Admin Overload</h3>
-                <p>Spending hours on data entry, invoicing, and follow-ups instead of growing your business.</p>
-                <p class="sa-context"><em>In a recent survey, 78% of SA SMEs reported spending over 30% of their week on administrative tasks.</em></p>
-            </div>
-        </div>
-        <div id="modal3" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h3>Disconnected Tools Chaos</h3>
-                <p>Your WhatsApp, Excel, and email don't talk to each other, creating errors and wasted time.</p>
-                <p class="sa-context"><em>Most SA businesses use 3+ disconnected tools, causing an average of 5 hours weekly in reconciliation work.</em></p>
-            </div>
-        </div>
-        <div id="modal4" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h3>Growth Stalled by Capacity</h3>
-                <p>You're turning away business because you simply can't handle more clients with your current systems.</p>
-                <p class="sa-context"><em>82% of SA SMEs cite operational capacity as their biggest barrier to growth.</em></p>
-            </div>
-        </div>
 
         <!-- New Section: Unlock Your Business Potential (Replaces Use Cases) -->
-        <section class="section-potential">
-            <div class="container">
-                <h2 class="section-title">Unlock Your Business Potential</h2>
-                <p>Imagine what you could achieve with 10+ extra hours every week. Automation isn't just about replacing tasks... it's about transforming your business capacity and resilience, especially in the face of South Africa's unique challenges.</p>
-
-                <div class="potential-highlights">
-                    <div class="highlight-item">
-                        <div class="highlight-icon">⏱️</div>
-                        <h3>Reclaim Your Time</h3>
-                        <p>Break free from repetitive tasks and focus on high-impact activities that drive growth.</p>
-                    </div>
-                    <div class="highlight-item">
-                        <div class="highlight-icon">🛡️</div>
-                        <h3>Load Shedding Resilience</h3>
-                        <p>Build systems that keep working, even when the power goes out.</p>
-                    </div>
-                    <div class="highlight-item">
-                        <div class="highlight-icon">📈</div>
-                        <h3>Scale Without Stress</h3>
-                        <p>Handle more clients and opportunities without the overwhelm or need to hire extensively.</p>
-                    </div>
+        <section id="potential" class="py-16 card">
+            <div class="text-center mb-12 px-6">
+                <h2 class="text-3xl md:text-4xl font-bold heading-font text-white">Unlock Your Business Potential</h2>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Imagine what you could achieve with 10+ extra hours every week. Automation isn't just about replacing tasks... it's about transforming your business capacity and resilience.</p>
+            </div>
+            <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6 px-6">
+                <div class="bg-gray-900/50 p-6 rounded-lg text-center">
+                    <div class="text-3xl mb-4 accent-text">⏱️</div>
+                    <h4 class="font-bold text-lg mb-2 text-white">Reclaim Your Time</h4>
+                    <p class="text-gray-400">Break free from repetitive tasks and focus on high-impact activities that drive growth.</p>
                 </div>
-
-                <p>South African businesses like yours are already leveraging automation to overcome load shedding, reduce admin chaos, and unlock growth. The question isn't whether you can afford to automate—it's whether you can afford <em>not</em> to.</p>
-                <!-- Cleaned Link -->
-                <a href="https://russ-bytes.github.io/infoAI/" class="btn btn-large" target="_blank" rel="noopener">See Real-World Transformations</a>
+                <div class="bg-gray-900/50 p-6 rounded-lg text-center">
+                    <div class="text-3xl mb-4 accent-text">🛡️</div>
+                    <h4 class="font-bold text-lg mb-2 text-white">Load Shedding Resilience</h4>
+                    <p class="text-gray-400">Build systems that keep working, even when the power goes out.</p>
+                </div>
+                <div class="bg-gray-900/50 p-6 rounded-lg text-center">
+                    <div class="text-3xl mb-4 accent-text">📈</div>
+                    <h4 class="font-bold text-lg mb-2 text-white">Scale Without Stress</h4>
+                    <p class="text-gray-400">Handle more clients and opportunities without the overwhelm or need to hire extensively.</p>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <p class="text-gray-400 max-w-2xl mx-auto mb-6">South African businesses like yours are already leveraging automation. The question isn't whether you can afford to automate—it's whether you can afford <em>not</em> to.</p>
+                <a href="https://russ-bytes.github.io/infoAI/" target="_blank" class="cta-button">See Real-World Transformations</a>
             </div>
         </section>
 
-        <!-- Section 4: The Free AI Automation Audit (Form Removed, Button Added) -->
-        <section id="audit" class="section-audit">
-            <div class="container">
-                <div class="audit-intro">
-                    <h2 class="section-title">Your Free South African Business Automation Blueprint: Discover Your Top 3 Time-Saving Opportunities</h2>
-                    <p class="section-subtitle">Complete this 3-minute assessment and receive a personalized report showing exactly how to save 10+ hours weekly—specifically designed for South African business challenges like load shedding.</p>
+        <!-- Section 4: The Free AI Automation Audit (Blueprint) -->
+        <section id="audit" class="py-16">
+            <div class="text-center mb-12 px-6">
+                <h2 class="text-3xl md:text-4xl font-bold heading-font text-white">Your Free South African Business Automation Blueprint</h2>
+                <!-- Updated timeframe -->
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Discover Your Top 3 Time-Saving Opportunities. Complete this 3-minute assessment and receive a personalized report showing exactly how to save 10+ hours weekly—delivered within 12 hours.</p>
+            </div>
+            <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 px-6 mb-12">
+                <div class="text-center card">
+                    <div class="text-3xl mb-4 accent-text">📝</div>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Tell Us About Your SA Business</h3>
+                    <p class="text-gray-400">Share your biggest operational challenge in your own words—no tech knowledge needed.</p>
                 </div>
-
-                <div class="audit-process">
-                    <div class="process-step">
-                        <div class="step-icon">📝</div>
-                        <h3>Tell Us About Your SA Business</h3>
-                        <p>Share your biggest operational challenge in your own words—no tech knowledge needed.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-icon">🔍</div>
-                        <h3>I Analyze Your Automation Potential</h3>
-                        <p>As a systems engineer with SA business experience, I'll personally review your situation.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-icon">📄</div>
-                        <h3>Receive Your Actionable Blueprint</h3>
-                        <!-- Updated process time -->
-                        <p>Get a clear, step-by-step report with your top automation opportunities—delivered within 12 hours.</p>
-                    </div>
+                <div class="text-center card">
+                    <div class="text-3xl mb-4 accent-text">🔍</div>
+                    <h3 class="text-xl font-semibold mb-2 text-white">I Analyze Your Automation Potential</h3>
+                    <p class="text-gray-400">As a systems engineer with SA business experience, I'll personally review your situation.</p>
                 </div>
-
-                <!-- Removed Form, Added Direct Link Button (Cleaned) -->
-                <a href="https://cal.com/russvn/aiaudit" class="btn btn-primary btn-large" target="_blank" rel="noopener">Book Your Free Audit</a>
-                <!-- Updated Microcopy to align with PRD expectation for report delivery -->
-                <p class="microcopy">No obligation. Complete report delivered within 48 hours.</p>
+                <div class="text-center card">
+                    <div class="text-3xl mb-4 accent-text">📄</div>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Receive Your Actionable Blueprint</h3>
+                    <!-- Updated timeframe -->
+                    <p class="text-gray-400">Get a clear, step-by-step report with your top automation opportunities—delivered within 12 hours.</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <button id="audit-book-call" class="open-modal-button cta-button !py-4 !px-10">Book Your Free Audit</button>
+                <!-- Updated timeframe -->
+                <p class="mt-4 text-sm text-gray-500">No obligation. Complete report delivered within 12 hours.</p>
             </div>
         </section>
 
-        <!-- Section 5: About Russ (Replaced with Link Button) -->
-        <section id="about" class="section-about">
-            <div class="container">
-                <h2 class="section-title">Learn More About Russ</h2>
-                <p>Discover Russ's background, vision, and approach to helping South African businesses.</p>
-                <!-- Cleaned Link -->
-                <a href="https://russ-bytes.github.io/Profile/" class="btn btn-secondary btn-large" target="_blank" rel="noopener">Visit Page</a>
-            </div>
+        <!-- Final CTA Section -->
+        <section class="py-20 text-center card">
+            <h2 class="text-3xl md:text-4xl font-bold heading-font text-white mb-6">Ready to Reclaim Your Time and Amplify Your Business?</h2>
+            <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Sometimes, the biggest leaps forward begin with a simple conversation. If you're tired of operational bottlenecks and ready to explore how targeted automation can transform your workflow, let's chat.</p>
+            <button id="final-cta-book-call" class="open-modal-button mt-8 cta-button !py-4 !px-10">Book Your Free Discovery Call</button>
         </section>
-
-        <!-- Section 6: Contact (Footer Link Placeholder) -->
-        <!-- The 'Prefer to Chat First?' section is removed. The 'Chat to us' link in the Hero can link to the footer or general contact info there. -->
 
     </main>
 
     <!-- Section 7: Footer -->
-    <footer id="contact" class="site-footer">
-        <div class="container">
-            <!-- Restored name to copyright -->
-            <p>&copy; 2025 Russ van Niekerk. All rights reserved.</p>
-            <p>Based in Cape Town, Serving Businesses Across South Africa</p>
-            <!-- Removed empty footer links div -->
+    <footer id="contact" class="text-center py-10 mt-16 border-t border-gray-700 relative z-10">
+        <!-- Anonymized copyright -->
+        <p class="text-gray-400">&copy; 2025 Russ. All rights reserved.</p>
+        <p class="text-sm text-gray-500 mt-2">Based in Cape Town, Serving Businesses Across South Africa</p>
+        <div class="mt-4">
+            <a href="https://www.linkedin.com/in/russ-van-niekerk" target="_blank" rel="noopener" class="text-gray-400 hover:text-sky-400 mx-2">LinkedIn</a>
+            <!-- Removed other links -->
         </div>
     </footer>
 
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="text-white font-semibold text-lg">Book Your Free Audit</h3>
+                <button id="modal-close-button" class="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-loader" class="modal-loader">Loading Booking Page...</div>
+                <iframe id="modal-iframe" class="modal-iframe" title="Booking Page" src="about:blank"></iframe>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-
-            // --- Modal Functionality for Problem Cards ---
-            const problemItems = document.querySelectorAll('.problem-item');
-            const modals = document.querySelectorAll('.modal');
-            const closeButtons = document.querySelectorAll('.close');
-
-            problemItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const modalId = this.getAttribute('data-modal');
-                    const modal = document.getElementById(modalId);
-                    if (modal) {
-                        modal.style.display = 'block';
-                        // Prevent background scroll
-                        document.body.style.overflow = 'hidden';
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Particles.js Configuration (Matching the example) ---
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#38bdf8" }, // Sky-400
+                    "shape": { "type": "circle" },
+                    "opacity": { "value": 0.3, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                    "size": { "value": 3, "random": true },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#4b5563", "opacity": 0.4, "width": 1 }, // Gray-600
+                    "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "out" }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": { "enable": true, "mode": "grab" },
+                        "onclick": { "enable": true, "mode": "push" },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                        "push": { "particles_nb": 4 }
                     }
-                });
-
-                // Allow keyboard interaction (Enter/Space)
-                item.addEventListener('keydown', function(e) {
-                     if (e.key === 'Enter' || e.key === ' ') {
-                         e.preventDefault();
-                         this.click();
-                     }
-                });
+                },
+                "retina_detect": true
             });
 
-            closeButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const modal = this.closest('.modal');
-                    if (modal) {
-                        modal.style.display = 'none';
-                        document.body.style.overflow = ''; // Restore scroll
-                    }
-                });
+            // --- Modal Logic ---
+            const modal = document.getElementById('booking-modal');
+            const modalIframe = document.getElementById('modal-iframe');
+            const modalLoader = document.getElementById('modal-loader');
+            const openModalButtons = document.querySelectorAll('.open-modal-button');
+            const closeModalButton = document.getElementById('modal-close-button');
+            // Use the Calendly link from the PRD/previous iterations
+            const bookingUrl = 'https://cal.com/russvn/aiaudit';
+
+            const openModal = () => {
+                document.body.classList.add('modal-open');
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                    modal.style.opacity = '1';
+                    modal.querySelector('.modal-container').style.transform = 'scale(1)';
+                }, 10);
+
+                modalLoader.style.display = 'flex';
+                modalIframe.src = ''; // Clear previous src
+                // Add a small delay to ensure loader is visible before setting src
+                setTimeout(() => {
+                     modalIframe.src = bookingUrl;
+                }, 100);
+            };
+
+            const closeModal = () => {
+                modal.style.opacity = '0';
+                modal.querySelector('.modal-container').style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.classList.remove('modal-open');
+                    modalIframe.src = 'about:blank'; // Stop iframe loading
+                }, 300);
+            };
+
+            modalIframe.onload = () => {
+                modalLoader.style.display = 'none';
+            };
+
+            // Handle errors in iframe loading
+            modalIframe.onerror = () => {
+                 modalLoader.style.display = 'none';
+                 // Optional: Show an error message inside the modal
+                 modalIframe.insertAdjacentHTML('afterend', '<p class="text-red-500 p-4">Failed to load the booking page. Please try again or visit <a href="' + bookingUrl + '" target="_blank" class="underline">the booking page directly</a>.</p>');
+            };
+
+            openModalButtons.forEach(button => button.addEventListener('click', openModal));
+            closeModalButton.addEventListener('click', closeModal);
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeModal();
+                }
             });
 
-            // Close modal if user clicks outside the content
-            window.addEventListener('click', function(event) {
-                modals.forEach(modal => {
-                    if (event.target === modal) {
-                        modal.style.display = 'none';
-                        document.body.style.overflow = ''; // Restore scroll
-                    }
-                });
-            });
-
-            // Close modal with Escape key
-            document.addEventListener('keydown', function(event) {
-                 if (event.key === 'Escape') {
-                     modals.forEach(modal => {
-                         if (modal.style.display === 'block') {
-                             modal.style.display = 'none';
-                             document.body.style.overflow = ''; // Restore scroll
-                         }
-                     });
-                 }
-            });
-
-            // --- Basic Smooth Scrolling for Anchor Links ---
+            // --- Smooth Scrolling for Anchor Links (from previous JS) ---
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    // Only prevent default for internal anchors that exist
                     const targetId = this.getAttribute('href');
                     if (targetId !== '#' && document.querySelector(targetId)) {
                          e.preventDefault();
@@ -716,7 +515,6 @@
                              });
                          }
                     }
-                    // If href="#" or target doesn't exist, let it behave normally (e.g., link to footer)
                 });
             });
 
