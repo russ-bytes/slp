@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Automation for South African Businesses | Free Audit</title>
+    <meta name="description" content="Get a free AI automation audit specifically for South African businesses. Discover how to save 10+ hours weekly despite load shedding. No obligation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Branding (from PRD Section 6.1) */
+        :root {
+            --color-primary: #0A2463; /* Deep blue */
+            --color-secondary: #D4AF37; /* Gold */
+            --color-accent: #4CAF50; /* Green */
+            --color-neutral-light: #F5F5F5; /* Light gray */
+            --color-text: #333;
+            --color-text-light: #666;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            --border-radius: 8px;
+            --spacing-unit: 1rem;
+            --max-width: 1200px;
+            --card-transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Reset & Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: #fff;
+            overflow-x: hidden; /* Prevent horizontal scroll from card tilt */
+        }
+
+        .container {
+            width: 90%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: calc(var(--spacing-unit) * 2) 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-unit);
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            margin-bottom: var(--spacing-unit);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: var(--border-radius);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            font-size: 1rem;
+            margin-bottom: calc(var(--spacing-unit) / 2);
+            text-decoration: none; /* For links styled as buttons */
+            color: white; /* Default for primary buttons */
+        }
+
+        .btn-primary {
+            background-color: var(--color-secondary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #b89528; /* Darker gold */
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(10, 36, 99, 0.05);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .btn-large {
+             padding: 18px 36px;
+             font-size: 1.1rem;
+        }
+
+        .microcopy {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            margin-top: 0;
+            margin-bottom: calc(var(--spacing-unit) * 1.5);
+        }
+
+        /* Sections */
+        section {
+            padding: calc(var(--spacing-unit) * 3) 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            font-size: 2rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto calc(var(--spacing-unit) * 2);
+            color: var(--color-text-light);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: var(--color-neutral-light);
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 4) 0;
+        }
+
+        .hero-headline {
+            font-size: 2.2rem;
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .hero-subheadline {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto var(calc(var(--spacing-unit) * 2));
+        }
+
+        .hero-ctas {
+            margin-top: calc(var(--spacing-unit) * 2);
+        }
+
+        /* Floating 3D Cards for Problems */
+        .problem-grid {
+            display: grid;
+            gap: calc(var(--spacing-unit) * 2);
+            perspective: 1000px; /* For 3D effect */
+        }
+
+        .problem-item {
+            background-color: #fff;
+            padding: calc(var(--spacing-unit) * 1.5);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: var(--card-transition);
+            position: relative;
+            transform-style: preserve-3d; /* For 3D effect */
+            text-align: center; /* Center content */
+        }
+
+        .problem-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .problem-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--color-neutral-light);
+            border-radius: 50%;
+            margin: 0 auto var(--spacing-unit); /* Center icon */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--color-primary);
+            font-size: 1.5rem;
+        }
+
+        .problem-item h3 {
+            margin-top: 0;
+            margin-bottom: var(--spacing-unit);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
+            backdrop-filter: blur(5px); /* Blur effect */
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: calc(var(--spacing-unit) * 2);
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            animation: slideIn 0.3s ease-out forwards;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: var(--color-text);
+        }
+
+        .modal-content h3 {
+             margin-top: 0;
+             text-align: center;
+             color: var(--color-primary);
+        }
+
+         /* Animations for Modal */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* New Engaging Section: Unlock Your Business Potential */
+        .section-potential {
+            background: linear-gradient(135deg, var(--color-primary), #1a3a7a); /* Subtle gradient */
+            color: white;
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 4) 0;
+        }
+
+        .section-potential .container {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             gap: calc(var(--spacing-unit) * 2);
+        }
+
+        .section-potential .section-title {
+             color: white;
+             margin-bottom: calc(var(--spacing-unit) * 1.5);
+        }
+
+        .section-potential p {
+             max-width: 700px;
+             margin: 0 auto calc(var(--spacing-unit) * 1.5);
+             font-size: 1.1rem;
+             opacity: 0.9; /* Slightly less opaque for better readability */
+        }
+
+        .potential-highlights {
+             display: flex;
+             flex-wrap: wrap;
+             justify-content: center;
+             gap: calc(var(--spacing-unit) * 2);
+             margin: calc(var(--spacing-unit) * 2) 0;
+             width: 100%;
+        }
+
+        .highlight-item {
+             flex: 1 1 250px; /* Flex grow, shrink, basis */
+             background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+             padding: calc(var(--spacing-unit) * 1.5);
+             border-radius: var(--border-radius);
+             text-align: center;
+             backdrop-filter: blur(5px); /* Frosted glass effect */
+        }
+
+        .highlight-icon {
+             font-size: 2rem;
+             margin-bottom: var(--spacing-unit);
+             color: var(--color-secondary); /* Use gold for icons */
+        }
+
+        .highlight-item h3 {
+             color: white;
+             margin-bottom: calc(var(--spacing-unit) / 2);
+        }
+
+        .highlight-item p {
+             font-size: 0.95rem;
+             margin-bottom: 0;
+             opacity: 0.85;
+        }
+
+        .section-potential .btn {
+             background-color: white;
+             color: var(--color-primary);
+             border: 2px solid white;
+             font-weight: bold;
+        }
+
+        .section-potential .btn:hover {
+             background-color: rgba(255, 255, 255, 0.9);
+             transform: translateY(-2px);
+        }
+
+        /* Audit Section */
+        .section-audit {
+            /* background-color: var(--color-neutral-light); - Removed background */
+            text-align: center;
+        }
+
+        .audit-intro {
+             max-width: 800px;
+             margin: 0 auto calc(var(--spacing-unit) * 3);
+        }
+
+        .audit-process {
+            display: grid;
+            gap: calc(var(--spacing-unit) * 2);
+            max-width: 900px;
+            margin: 0 auto calc(var(--spacing-unit) * 3);
+        }
+
+        .process-step {
+            background-color: #fff;
+            padding: calc(var(--spacing-unit) * 1.5);
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-neutral-light);
+            border-radius: 50%;
+            margin: 0 auto var(--spacing-unit);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        .process-step h3 {
+            margin-top: 0;
+        }
+
+        /* About Section (Now Link Button) */
+        .section-about {
+            text-align: center;
+            background-color: var(--color-neutral-light);
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--color-primary);
+            color: white;
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 2) 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .container {
+                width: 85%;
+            }
+
+            .hero-headline {
+                font-size: 2.8rem;
+            }
+
+            .problem-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .audit-process {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .modal-content {
+                 padding: calc(var(--spacing-unit) * 3);
+            }
+
+            .potential-highlights {
+                 flex-wrap: nowrap; /* Keep items in one line on larger screens */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                width: 80%;
+            }
+
+            .hero-headline {
+                font-size: 3.2rem;
+            }
+
+            .problem-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Accessibility */
+        a:focus, .btn:focus, input:focus, textarea:focus, select:focus, .problem-item:focus {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--color-primary);
+            color: white;
+            padding: 8px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Print Styles */
+        @media print {
+            .btn, .hero-ctas, .problem-item, .modal, .potential-highlights {
+                display: none;
+            }
+            .hero-headline, .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Section 1: Hero (The Hook) -->
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="hero-headline">Stop Losing Money to Manual Work: AI Automation Built for South African Businesses</h1>
+            <!-- Updated Hero Subheadline to match PRD and previous versions -->
+            <p class="hero-subheadline">As a systems engineer with 8+ years helping South African businesses like yours, I've created custom automation solutions that save owners an average of 12 hours weekly—even during load shedding.</p>
+            <div class="hero-ctas">
+                <!-- Cleaned Primary CTA Link -->
+                <a href="https://cal.com/russvn/aiaudit" class="btn btn-primary btn-large">Get My Free AI Action Plan</a>
+                <!-- Updated Microcopy to align with PRD expectation for report delivery -->
+                <p class="microcopy">No obligation. Complete report delivered within 48 hours.</p>
+                <!-- Updated Secondary CTA Text -->
+                <a href="#contact" class="btn btn-secondary">Chat to us</a>
+                <p class="microcopy">Prefer to talk first? I'm just an email away.</p>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Section 2: The Problem - "Sound Familiar..." (Updated with 3D Cards & Modals) -->
+        <section id="problems" class="section-problems">
+            <div class="container">
+                <h2 class="section-title">Sound Familiar, South African Business Owner?</h2>
+                <div class="problem-grid">
+                    <div class="problem-item" tabindex="0" data-modal="modal1">
+                        <div class="problem-icon">⚡</div>
+                        <h3>Load Shedding Disruptions</h3>
+                        <p>When the power goes out...</p> <!-- Truncated for card view -->
+                    </div>
+                    <div class="problem-item" tabindex="0" data-modal="modal2">
+                        <div class="problem-icon">📝</div>
+                        <h3>Manual Admin Overload</h3>
+                        <p>Spending hours on data entry...</p>
+                    </div>
+                    <div class="problem-item" tabindex="0" data-modal="modal3">
+                        <div class="problem-icon">🔗</div>
+                        <h3>Disconnected Tools Chaos</h3>
+                        <p>Your WhatsApp, Excel, and email...</p>
+                    </div>
+                    <div class="problem-item" tabindex="0" data-modal="modal4">
+                        <div class="problem-icon">📈</div>
+                        <h3>Growth Stalled by Capacity</h3>
+                        <p>You're turning away business...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modals for Problem Details -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Load Shedding Disruptions</h3>
+                <p>When the power goes out, your entire workflow stops. Manual systems mean lost productivity that's impossible to recover.</p>
+                <p class="sa-context"><em>South African businesses lose an average of 8 hours weekly to load shedding disruptions—time you'll never get back.</em></p>
+            </div>
+        </div>
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Manual Admin Overload</h3>
+                <p>Spending hours on data entry, invoicing, and follow-ups instead of growing your business.</p>
+                <p class="sa-context"><em>In a recent survey, 78% of SA SMEs reported spending over 30% of their week on administrative tasks.</em></p>
+            </div>
+        </div>
+        <div id="modal3" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Disconnected Tools Chaos</h3>
+                <p>Your WhatsApp, Excel, and email don't talk to each other, creating errors and wasted time.</p>
+                <p class="sa-context"><em>Most SA businesses use 3+ disconnected tools, causing an average of 5 hours weekly in reconciliation work.</em></p>
+            </div>
+        </div>
+        <div id="modal4" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Growth Stalled by Capacity</h3>
+                <p>You're turning away business because you simply can't handle more clients with your current systems.</p>
+                <p class="sa-context"><em>82% of SA SMEs cite operational capacity as their biggest barrier to growth.</em></p>
+            </div>
+        </div>
+
+        <!-- New Section: Unlock Your Business Potential (Replaces Use Cases) -->
+        <section class="section-potential">
+            <div class="container">
+                <h2 class="section-title">Unlock Your Business Potential</h2>
+                <p>Imagine what you could achieve with 10+ extra hours every week. Automation isn't just about replacing tasks... it's about transforming your business capacity and resilience, especially in the face of South Africa's unique challenges.</p>
+
+                <div class="potential-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⏱️</div>
+                        <h3>Reclaim Your Time</h3>
+                        <p>Break free from repetitive tasks and focus on high-impact activities that drive growth.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🛡️</div>
+                        <h3>Load Shedding Resilience</h3>
+                        <p>Build systems that keep working, even when the power goes out.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">📈</div>
+                        <h3>Scale Without Stress</h3>
+                        <p>Handle more clients and opportunities without the overwhelm or need to hire extensively.</p>
+                    </div>
+                </div>
+
+                <p>South African businesses like yours are already leveraging automation to overcome load shedding, reduce admin chaos, and unlock growth. The question isn't whether you can afford to automate—it's whether you can afford <em>not</em> to.</p>
+                <!-- Cleaned Link -->
+                <a href="https://russ-bytes.github.io/infoAI/" class="btn btn-large" target="_blank" rel="noopener">See Real-World Transformations</a>
+            </div>
+        </section>
+
+        <!-- Section 4: The Free AI Automation Audit (Form Removed, Button Added) -->
+        <section id="audit" class="section-audit">
+            <div class="container">
+                <div class="audit-intro">
+                    <h2 class="section-title">Your Free South African Business Automation Blueprint: Discover Your Top 3 Time-Saving Opportunities</h2>
+                    <p class="section-subtitle">Complete this 3-minute assessment and receive a personalized report showing exactly how to save 10+ hours weekly—specifically designed for South African business challenges like load shedding.</p>
+                </div>
+
+                <div class="audit-process">
+                    <div class="process-step">
+                        <div class="step-icon">📝</div>
+                        <h3>Tell Us About Your SA Business</h3>
+                        <p>Share your biggest operational challenge in your own words—no tech knowledge needed.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-icon">🔍</div>
+                        <h3>I Analyze Your Automation Potential</h3>
+                        <p>As a systems engineer with SA business experience, I'll personally review your situation.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-icon">📄</div>
+                        <h3>Receive Your Actionable Blueprint</h3>
+                        <!-- Updated process time -->
+                        <p>Get a clear, step-by-step report with your top automation opportunities—delivered within 12 hours.</p>
+                    </div>
+                </div>
+
+                <!-- Removed Form, Added Direct Link Button (Cleaned) -->
+                <a href="https://cal.com/russvn/aiaudit" class="btn btn-primary btn-large" target="_blank" rel="noopener">Book Your Free Audit</a>
+                <!-- Updated Microcopy to align with PRD expectation for report delivery -->
+                <p class="microcopy">No obligation. Complete report delivered within 48 hours.</p>
+            </div>
+        </section>
+
+        <!-- Section 5: About Russ (Replaced with Link Button) -->
+        <section id="about" class="section-about">
+            <div class="container">
+                <h2 class="section-title">Learn More About Russ</h2>
+                <p>Discover Russ's background, vision, and approach to helping South African businesses.</p>
+                <!-- Cleaned Link -->
+                <a href="https://russ-bytes.github.io/Profile/" class="btn btn-secondary btn-large" target="_blank" rel="noopener">Visit Page</a>
+            </div>
+        </section>
+
+        <!-- Section 6: Contact (Footer Link Placeholder) -->
+        <!-- The 'Prefer to Chat First?' section is removed. The 'Chat to us' link in the Hero can link to the footer or general contact info there. -->
+
+    </main>
+
+    <!-- Section 7: Footer -->
+    <footer id="contact" class="site-footer">
+        <div class="container">
+            <!-- Restored name to copyright -->
+            <p>&copy; 2025 Russ van Niekerk. All rights reserved.</p>
+            <p>Based in Cape Town, Serving Businesses Across South Africa</p>
+            <!-- Removed empty footer links div -->
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // --- Modal Functionality for Problem Cards ---
+            const problemItems = document.querySelectorAll('.problem-item');
+            const modals = document.querySelectorAll('.modal');
+            const closeButtons = document.querySelectorAll('.close');
+
+            problemItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = 'block';
+                        // Prevent background scroll
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+
+                // Allow keyboard interaction (Enter/Space)
+                item.addEventListener('keydown', function(e) {
+                     if (e.key === 'Enter' || e.key === ' ') {
+                         e.preventDefault();
+                         this.click();
+                     }
+                });
+            });
+
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    if (modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = ''; // Restore scroll
+                    }
+                });
+            });
+
+            // Close modal if user clicks outside the content
+            window.addEventListener('click', function(event) {
+                modals.forEach(modal => {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = ''; // Restore scroll
+                    }
+                });
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(event) {
+                 if (event.key === 'Escape') {
+                     modals.forEach(modal => {
+                         if (modal.style.display === 'block') {
+                             modal.style.display = 'none';
+                             document.body.style.overflow = ''; // Restore scroll
+                         }
+                     });
+                 }
+            });
+
+            // --- Basic Smooth Scrolling for Anchor Links ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    // Only prevent default for internal anchors that exist
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#' && document.querySelector(targetId)) {
+                         e.preventDefault();
+                         const targetElement = document.querySelector(targetId);
+                         if (targetElement) {
+                             targetElement.scrollIntoView({
+                                 behavior: 'smooth'
+                             });
+                         }
+                    }
+                    // If href="#" or target doesn't exist, let it behave normally (e.g., link to footer)
+                });
+            });
+
+        });
+    </script>
+
+</body>
+</html>
